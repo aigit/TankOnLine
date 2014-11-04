@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<META HTTP-EQUIV="Pragma" NAME="" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" NAME="" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" NAME="" CONTENT="0"> 
+
+<script type="text/javascript" src="dynamic.jsp?v=Math.random()"></script>
+</head>
+<body onkeydown="getCommandDown();" onkeyup="getCommandUp();">
+<h3>zaqzaq坦克对战(迷你网游)</h3>
+<div style="font-size:11px" >控制：W:上  A：左  S：下  D：右     J：打炮</div>
+<b>
+	<div id="aa">大战开始<button id="readlyButton" onClick="Game.readly()">准备!</button> <button id="startButton" onClick="Game.start()">开始!</button> </div>
+</b>
+<span style="position:absolute;left:10px">
+	<div>
+		<textarea id="chatlog" style="height:450px;width:380px" readonly></textarea>
+	</div>
+	<div>
+		<input id="msg" type="text" />
+		<button type="submit" id="sendButton" onClick="WS.postToServer()">Send!</button>
+		<button type="submit" id="sendButton" onClick="WS.closeConnect()">End</button>
+	</div>
+</span>
+<!--坦克大战的战场-->
+<span style="position:absolute;left:400px"><canvas id="tankMap" width="800px" height="500px" style="background-color:black"></canvas></span>
+<div style="position:absolute;top:600px">
+	<div >
+		<span>准备列表：</span><span id="readlyList" style="color:green"></span>
+	</div>
+	<div >
+		<span>空闲列表：</span><span id="releaseList" style="color:blue"></span>
+	</div>
+	<div >
+		<span>游戏中列表:</span><span id="gameingList" style="color:red"></span>
+	</div>
+</div>
+<!--把tankGames.js引入到本页面-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="Tank.js?v=Math.random()"></script>
+<script type="text/javascript" src="Kill.js?v=Math.random()"></script>
+<script type="text/javascript" src="tankGame.js?v=Math.random()"></script>
+<script type="text/javascript" src="Message.js?v=Math.random()"></script>
+<script type="text/javascript" src="Player.js?v=Math.random()"></script>
+<script type="text/javascript" src="webSocket.js?v=Math.random()"></script>
+<script type="text/javascript" src="Game.js?v=Math.random()"></script>
+</body>
+</html>
