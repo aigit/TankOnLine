@@ -9,8 +9,9 @@ import javax.websocket.Session;
 
 /**
  * 玩家用户池
- * @author zaqzaq
- * 2014年10月29日
+ * @author 作者：章英杰
+ * @link	联系方式：382566697@qq.com
+ * @date    2014年11月4日
  *
  */
 public class PlayerPool {
@@ -30,6 +31,10 @@ public class PlayerPool {
 		}
 		return players;
 	}
+	/**
+	 * 获取所有在线用户
+	 * @return
+	 */
 	public static List<Player> getAllPlayer(){
 		List<Player> players=new ArrayList<Player>();
 		for(Session session:palyerMap.keySet()){
@@ -37,7 +42,11 @@ public class PlayerPool {
 		}
 		return players;
 	}
-	
+	/**
+	 * 判断用户名是否重复
+	 * @param name
+	 * @return
+	 */
 	public static boolean hasPlayer(String name){
 		boolean retVal=false;
 		Player player=null;

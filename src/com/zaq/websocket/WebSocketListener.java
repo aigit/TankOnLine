@@ -23,6 +23,14 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.zaq.tank.Player;
 import com.zaq.tank.PlayerPool;
+/**
+ * 
+ * @author 作者：章英杰
+
+ * @link	联系方式：382566697@qq.com
+ * @date    2014年11月4日
+ *
+ */
 @ServerEndpoint(value="/websocket",encoders={MessageEncoder.class},decoders={MessageDecoder.class})
 public class WebSocketListener {
 	private Map<Session, Player> playerPool=PlayerPool.getPalyerMap();
@@ -35,7 +43,7 @@ public class WebSocketListener {
 		if(null!=player){
 			message.setP(player.getName());//设置消息发送人
 		}
-		
+		//后期如果指令太多，可以考滤使用责任链模式
 		switch(message.getA()){
 			case Message.LOGIN:
 				//do palyer login
@@ -171,7 +179,12 @@ public class WebSocketListener {
 	public void onError(Session session,Throwable thr) {
 		System.out.println("onError::"+thr.getMessage());
 	}
-	
+	/**
+	 * 给所有在线玩家发送消息
+	 * @param message
+	 * @throws IOException
+	 * @throws EncodeException
+	 */
 	public void sendAll(Message message) throws IOException, EncodeException{
 		
 		for(Session session:playerPool.keySet()){
@@ -179,7 +192,13 @@ public class WebSocketListener {
 			send(session, message);
 		}
 	}
-	
+	/**
+	 * 给指定在线玩家发送消息
+	 * @param message
+	 * @param players
+	 * @throws IOException
+	 * @throws EncodeException
+	 */
 	public void sendAll(Message message,List<Player> players) throws IOException, EncodeException{
 		
 		for(Player player:players){
@@ -187,7 +206,12 @@ public class WebSocketListener {
 			send(player.getSession(), message);
 		}
 	}
-	
+	/**
+	 * 发送玩家的信息
+	 * @param session
+	 * @throws IOException
+	 * @throws EncodeException
+	 */
 	public void sendPlayerStatus(Session session) throws IOException, EncodeException{
 		List<Player> players=PlayerPool.getAllPlayer();
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();

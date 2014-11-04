@@ -8,21 +8,23 @@ import com.google.gson.annotations.Expose;
 
 public class Player {
 	private static final Random random=new Random();
-	public static final Integer READLY=0;
-	public static final Integer GAMEING=1;
-	public static final Integer RELEASE=2;
+	public static final Integer READLY=0;//准备
+	public static final Integer GAMEING=1;//游戏中
+	public static final Integer RELEASE=2;//空闲
 	@Expose
-	private String name;
+	private String name;//名称
 	private Session session;
 	@Expose
-	private Short level;
+	private Short level;//等级
 	@Expose
-	private Integer status;
+	private Integer status;//游戏状态
 	@Expose
-	private int x;
+	private int x;//x坐标
 	@Expose
-	private int y;
-	
+	private int y;//y坐标
+	/**
+	 * 生成随机的坐标
+	 */
 	public void genXY(){
 		this.x=random.nextInt(750);
 		this.y=random.nextInt(450);
@@ -48,7 +50,7 @@ public class Player {
 		super();
 		this.name = name;
 		this.session = session;
-		this.level = 5;
+		this.level = 5;//默认等级为5
 		status=RELEASE;
 	}
 	
