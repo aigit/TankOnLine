@@ -50,7 +50,7 @@ public class Player {
 		super();
 		this.name = name;
 		this.session = session;
-		this.level = 5;//默认等级为5
+		this.level = 2;//默认等级为5
 		status=RELEASE;
 	}
 	

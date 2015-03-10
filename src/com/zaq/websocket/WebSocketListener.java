@@ -68,7 +68,7 @@ public class WebSocketListener {
 				
 				player=new Player(play, session);
 				if(play.equals(ADMIN)){
-					player.setLevel((short)8);
+					player.setLevel((short)3);
 				}
 				session.getUserProperties().put("player", player);
 				playerPool.put(session,player);
